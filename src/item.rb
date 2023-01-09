@@ -2,13 +2,13 @@ class Item
   attr_accessor :publish_date, :archieved
   attr_reader :id
 
-  def initialize(publish_date, archieved = false)
+  def initialize(publish_date, archieved: false)
     @id = rand(100...1000)
     @publish_date = publish_date
     @archieved = archieved
   end
 
-  def genre=(genre) 
+  def genre=(genre)
     genre.item = self
   end
 
