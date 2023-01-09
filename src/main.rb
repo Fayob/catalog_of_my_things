@@ -1,7 +1,7 @@
 require_relative './app'
 
 def main
-  puts "Welcome"
+  puts 'Welcome'
 
   app = App.new
 

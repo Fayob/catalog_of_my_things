@@ -16,7 +16,7 @@ class App
   end
 
   def way_to_exit
-    puts "Exiting..."
+    puts 'Exiting...'
     exit
   end
 
@@ -55,16 +55,15 @@ class App
     end
   end
 
-
   def choices
     list_options
     input = gets.chomp.to_i
 
-    if (input > 0 && input < 4 )
+    if input.positive? && input < 4
       first_choices(input)
-    elsif (input > 3 && input < 8)
+    elsif input > 3 && input < 8
       second_choices(input)
-    elsif (input > 7 && input < 11)
+    elsif input > 7 && input < 11
       third_choices(input)
     else
       way_to_exit
