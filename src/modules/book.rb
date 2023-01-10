@@ -1,6 +1,7 @@
-require './item.rb'
+require './src/modules/item'
+require './src/modules/label'
 
-class Item < Book
+class Book < Item
   attr_accessor :publisher, :cover_state
 
   def initialize(publish_date, label, genre, author, publisher, cover_state)
@@ -13,3 +14,7 @@ class Item < Book
     super || @cover_state == 'bad'
   end
 end
+
+
+
+
