@@ -22,7 +22,7 @@ class Item
     author.item = self
   end
 
-  def set_label(label)
+  def label(label)
     @label.remove_item(self)
     label.add_item(self)
   end
