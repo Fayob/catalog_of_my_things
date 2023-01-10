@@ -20,7 +20,7 @@ class Arcade
 
     puts "Enter Cover State:\n(1)Great\n(2)Good\n(3)bad"
     cover_state = gets.chomp.to_i
-    cover_state_options = {1 => 'Great', 2 => 'Good', 3 => 'Bad'}
+    cover_state_options = { 1 => 'Great', 2 => 'Good', 3 => 'Bad' }
 
     @books << Book.new(publish_date, publisher, cover_state_options[cover_state] || 'bad')
 
@@ -37,7 +37,7 @@ class Arcade
     @labels << Label.new(title, color)
   end
 
-  def add_book_label(label, book)
+  def add_book_label(_label, _book)
     if @books.legnth && @labels.legnth
       puts 'Please Select a Book:'
       list_books(true)

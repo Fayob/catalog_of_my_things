@@ -25,7 +25,7 @@ module PreserveArcade
     labels.each do |label|
       data << {
         title: label.title,
-        color: label.color,
+        color: label.color
       }
     end
     File.write(LABELS_FILE, JSON.generate(data))
@@ -33,6 +33,7 @@ module PreserveArcade
 
   def create_book_class(data)
     return [] if data.empty?
+
     new_data = []
 
     data.each do |book|
@@ -46,6 +47,7 @@ module PreserveArcade
 
   def create_label_class(data)
     return [] if data.empty?
+
     new_data = []
 
     data.each do |label|
