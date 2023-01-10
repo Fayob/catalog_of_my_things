@@ -1,8 +1,7 @@
 require './src/modules/book'
 
-label1 = Label.new('test label', 'red')
-book1 = Book.new('20201201', label1, 'genre', 'author', { publisher: 'test publisher', cover_state: 'good' })
-book2 = Book.new('20201201', label1, 'genre', 'author', { publisher: 'test publisher', cover_state: 'bad' })
+book1 = Book.new('20201201', 'test publisher', 'good')
+book2 = Book.new('20201201', 'test publisher', 'bad')
 
 describe Book do
   context 'When testing the Book class can_be_archived? method' do
@@ -11,11 +10,13 @@ describe Book do
     end
 
     it 'calling can_be_archived? should override parent method and return true if cover_status is "good"' do
-      expect(book1.can_be_archived?).to be false
+      book1.move_to_archive
+      expect(book1.archived).to be false
     end
 
     it 'calling can_be_archived? should override parent method and return true if cover_status is "good"' do
-      expect(book2.can_be_archived?).to be true
+      book2.move_to_archive
+      expect(book2.archived).to be true
     end
   end
 end
