@@ -3,7 +3,7 @@ require './src/modules/book'
 
 label1 = Label.new('test label', 'red')
 label2 = Label.new('label 2', 'blue')
-item = Book.new('20201201', label1, 'genre', 'author', {publisher: 'test publisher', cover_state: 'cover state test'})
+item = Book.new('20201201', label1, 'genre', 'author', { publisher: 'test publisher', cover_state: 'cover state test' })
 
 describe Label do
   context 'When testing the label class' do

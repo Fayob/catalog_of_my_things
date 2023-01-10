@@ -1,8 +1,8 @@
 require './src/modules/book'
 
 label1 = Label.new('test label', 'red')
-book1 = Book.new('20201201', label1, 'genre', 'author', {publisher: 'test publisher', cover_state: 'good'})
-book2 = Book.new('20201201', label1, 'genre', 'author', {publisher: 'test publisher', cover_state: 'bad'})
+book1 = Book.new('20201201', label1, 'genre', 'author', { publisher: 'test publisher', cover_state: 'good' })
+book2 = Book.new('20201201', label1, 'genre', 'author', { publisher: 'test publisher', cover_state: 'bad' })
 
 describe Book do
   context 'When testing the Book class can_be_archived? method' do
