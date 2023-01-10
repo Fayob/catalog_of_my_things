@@ -1,14 +1,16 @@
 require './src/modules/item'
-require './src/modules/label'
+require './src/label'
 
-class Book < ItemReplication
+class Book < Item
   attr_accessor :publisher, :cover_state
 
-  def initialize(publish_date, label, genre, author, book_data)
-    super(publish_date, label, genre, author)
-    @publisher = book_data[:publisher]
-    @cover_state = book_data[:cover_state]
+  def initialize(publish_date, publisher, cover_state)
+    super(publish_date)
+    @publisher = publisher
+    @cover_state = cover_state
   end
+
+  private
 
   def can_be_archived?
     super || @cover_state == 'bad'
