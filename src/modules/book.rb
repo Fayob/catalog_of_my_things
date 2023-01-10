@@ -1,7 +1,7 @@
 require './src/modules/item'
 require './src/modules/label'
 
-class Book < Item
+class Book < ItemReplication
   attr_accessor :publisher, :cover_state
 
   def initialize(publish_date, label, genre, author, book_data)

@@ -16,6 +16,5 @@ class Label
 
   def remove_item(item)
     @items.delete(item)
-    item.label = nil
   end
 end
