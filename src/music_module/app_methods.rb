@@ -1,0 +1,54 @@
+require_relative './music_detail.rb'
+require_relative './genre.rb'
+require_relative '../modules/label.rb'
+
+module AppMethods
+  def list_music_albums
+    if MusicDetail.list_music_albums.empty?
+      puts 'Oops! No available Album'
+    else
+      MusicDetail.list_music_albums.each { |album| puts "#{album.title} by #{album.artist}"}
+    end
+  end
+
+  def list_genres
+    if Genre.all_genres.empty?
+      puts 'Oops! No music found'
+    else
+      genres = []
+      Genre.all_genres.each { |genre| genres << genre.name }
+      puts genre.uniq
+    end
+  end
+
+  def is_it_true(bool)
+    case bool
+    when 'y'
+      true
+    when 'n'
+      false
+    end
+  end
+
+  def add_music_album
+    print 'Enter Album name: '
+    title = gets.chomp
+
+    print 'Enter artist name: '
+    artist = gets.chomp
+
+    print 'Enter the publish date:'
+    publish_date = gets.chomp
+
+    print 'Enter genre: '
+    genre = gets.chomp
+
+    print 'Is it on_spotify? [Y/N]'
+    spotify = gets.chomp.downcase
+    on_spotify = is_it_true(spotify)
+
+    Genre.new(genre)
+    MusicDetail.new(title, artist, publish_date, on_spotify) 
+    puts 'Music Album Created Successfully'
+  end
+end
