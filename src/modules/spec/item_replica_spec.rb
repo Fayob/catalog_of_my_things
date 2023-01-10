@@ -6,7 +6,6 @@ label2 = Label.new('test label2', 'blue')
 
 item_replication1 = ItemReplication.new('20201201', label1, 'genre', 'author')
 
-
 describe ItemReplication do
   context 'When testing the ItemReplication class methods' do
     it 'initiating the class should add self to label class items array' do
