@@ -5,7 +5,7 @@ class Game < Item
   attr_accessor :multiplayer, :last_played_at
   attr_reader :publish_date
 
-  def initialize(multiplayer, last_played_at, publish_date,)
+  def initialize(multiplayer, last_played_at, publish_date)
     super(publish_date)
     @id = Random.rand(100...1000)
     @multiplayer = multiplayer
