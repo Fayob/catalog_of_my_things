@@ -17,7 +17,7 @@ module AppMethods
     else
       genres = []
       Genre.all_genres.each { |genre| genres << genre.name }
-      puts genre.uniq
+      puts genres.uniq
     end
   end
 
@@ -37,18 +37,18 @@ module AppMethods
     print 'Enter artist name: '
     artist = gets.chomp
 
-    print 'Enter the publish date:'
+    print 'Enter the publish date: '
     publish_date = gets.chomp
 
     print 'Enter genre: '
     genre = gets.chomp
 
-    print 'Is it on_spotify? [Y/N]'
+    print 'Is it on_spotify? [Y/N] '
     spotify = gets.chomp.downcase
     on_spotify = is_it_true(spotify)
 
     Genre.new(genre)
-    MusicDetail.new(title, artist, publish_date, on_spotify) 
+    MusicDetail.new(title, artist, genre, on_spotify, publish_date) 
     puts 'Music Album Created Successfully'
   end
 end
