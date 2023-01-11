@@ -22,9 +22,6 @@ module AppMethods
       puts 'Oops! No music found'
     else
       puts @@genreArr.uniq
-      # genres = []
-      # Genre.all_genres.each { |genre| genres << genre['name'] }
-      # puts genres.uniq
     end
   end
 
@@ -58,23 +55,6 @@ module AppMethods
     MusicDetail.new(title, artist, genre, on_spotify, publish_date) 
 
     preserve_data(title, artist, genre, on_spotify, publish_date)
-
-    # Genre.all_genres.each do |genre| 
-    #   @@genreArr << genre.name
-    # end
-
-    
-
-    # MusicDetail.list_music_albums.each do |album| 
-    #   @@musicAlbumArr << {
-    #     title: album.title, 
-    #     artist: album.artist, 
-    #     genre: album.genre, 
-    #     on_spotify: album.on_spotify, 
-    #     publish_date: album.publish_date
-    #   }
-    # end
-
     
     puts 'Music Album Created Successfully'
   end
