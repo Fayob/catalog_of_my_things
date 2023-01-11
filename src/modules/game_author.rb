@@ -84,6 +84,3 @@ class GameAuthor
     @app.choices
   end
 end
-
-xx = GameAuthor.new
-xx.list_authors
