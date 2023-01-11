@@ -1,4 +1,4 @@
-require_relative './music_module/app_methods.rb'
+require_relative './music_module/app_methods'
 
 class App
   include AppMethods
