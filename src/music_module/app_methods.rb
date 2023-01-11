@@ -1,31 +1,31 @@
-require_relative './music_detail.rb'
-require_relative './genre.rb'
-require_relative '../modules/label.rb'
+require_relative './music_detail'
+require_relative './genre'
+require_relative '../modules/label'
 require 'json'
 
 module AppMethods
-  @@genreArr = JSON.parse(File.read('./src/music_module/storage/genre.json'))
-  @@musicAlbumArr = JSON.parse(File.read('./src/music_module/storage/musicAlbum.json'))
+  @@genre_arr = JSON.parse(File.read('./src/music_module/storage/genre.json'))
+  @@music_album_arr = JSON.parse(File.read('./src/music_module/storage/musicAlbum.json'))
 
   def list_music_albums
-    if @@musicAlbumArr.empty?
+    if @@music_album_arr.empty?
       puts 'Oops! No available Album'
     else
-      @@musicAlbumArr.each_with_index do |album, index| 
-        puts "[#{index + 1}] #{album["title"]} by #{album["artist"]}"
+      @@music_album_arr.each_with_index do |album, index|
+        puts "[#{index + 1}] #{album['title']} by #{album['artist']}"
       end
     end
   end
 
   def list_genres
-    if @@genreArr.empty?
+    if @@genre_arr.empty?
       puts 'Oops! No music found'
     else
-      puts @@genreArr.uniq
+      puts @@genre_arr.uniq
     end
   end
 
-  def is_it_true(bool)
+  def it_true(bool)
     case bool
     when 'y'
       true
@@ -49,28 +49,28 @@ module AppMethods
 
     print 'Is it on_spotify? [Y/N] '
     spotify = gets.chomp.downcase
-    on_spotify = is_it_true(spotify)
+    on_spotify = it_true(spotify)
 
     Genre.new(genre)
-    MusicDetail.new(title, artist, genre, on_spotify, publish_date) 
+    MusicDetail.new(title, artist, genre, on_spotify, publish_date)
 
     preserve_data(title, artist, genre, on_spotify, publish_date)
-    
+
     puts 'Music Album Created Successfully'
   end
 
   def preserve_data(title, artist, genre, on_spotify, publish_date)
-    @@genreArr << genre
+    @@genre_arr << genre
 
-    @@musicAlbumArr << {
-          'title' => title, 
-          'artist' => artist, 
-          'genre' => genre, 
-          'on_spotify' => on_spotify, 
-          'publish_date' => publish_date
-        }
+    @@music_album_arr << {
+      'title' => title,
+      'artist' => artist,
+      'genre' => genre,
+      'on_spotify' => on_spotify,
+      'publish_date' => publish_date
+    }
 
-    File.write('./src/music_module/storage/genre.json', JSON.pretty_generate(@@genreArr))
-    File.write('./src/music_module/storage/musicAlbum.json', JSON.pretty_generate(@@musicAlbumArr))
+    File.write('./src/music_module/storage/genre.json', JSON.pretty_generate(@@genre_arr))
+    File.write('./src/music_module/storage/musicAlbum.json', JSON.pretty_generate(@@music_album_arr))
   end
 end
