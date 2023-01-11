@@ -21,7 +21,7 @@ module AppMethods
     if @@genreArr.empty?
       puts 'Oops! No music found'
     else
-       @@genreArr.each {|gen| puts gen }
+      puts @@genreArr.uniq
       # genres = []
       # Genre.all_genres.each { |genre| genres << genre['name'] }
       # puts genres.uniq
@@ -83,11 +83,11 @@ module AppMethods
     @@genreArr << genre
 
     @@musicAlbumArr << {
-          title: title, 
-          artist: artist, 
-          genre: genre, 
-          on_spotify: on_spotify, 
-          publish_date: publish_date
+          'title' => title, 
+          'artist' => artist, 
+          'genre' => genre, 
+          'on_spotify' => on_spotify, 
+          'publish_date' => publish_date
         }
 
     File.write('./src/music_module/storage/genre.json', JSON.pretty_generate(@@genreArr))

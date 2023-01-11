@@ -5,6 +5,9 @@ class App
 
   def list_options
     op = "
+    Welcome to catalog of things
+    Please choose your desired option below
+    
     (1) List all books
     (2) List all music albums
     (3) List of games
