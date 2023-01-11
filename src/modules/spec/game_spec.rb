@@ -15,7 +15,7 @@ describe Game do
 
   context '#moved_to_archive?' do
     it 'returns true if can_be_archived? is true' do
-      expect(@item.moved_to_archive).to be true
+      expect(@item.move_to_archive).to be true
     end
   end
 end
