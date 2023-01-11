@@ -28,7 +28,6 @@ describe MusicAlbum do
 
     it('should return false if either can_be_archived and on_spotify is false') do
       new_item = Item.new('11-01-2023')
-      music_album = MusicAlbum.new('11/01/2023', true)
       expect(new_item.move_to_archive).to be(false)
     end
   end

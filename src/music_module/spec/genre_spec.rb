@@ -2,7 +2,7 @@ require_relative '../genre'
 require_relative '../../item'
 
 describe Genre do
-  before (:all) do
+  before(:all) do
     @genre = Genre.new('Gospel')
   end
 
