@@ -24,7 +24,7 @@ module AppMethods
       puts @@genre_arr.uniq
     end
   end
-  
+
   def add_music_album
     print 'Enter Album name: '
     title = gets.chomp
