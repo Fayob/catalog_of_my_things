@@ -5,10 +5,13 @@
 # one by one as the offenses are removed from the code base.
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
+# Offense count: 1
+# Configuration parameters: EnforcedStyle, AllowedIdentifiers, AllowedPatterns.
+# SupportedStyles: snake_case, camelCase
 
-# Offense count: 4
+# Offense count: 2
 Style/ClassVars:
   Exclude:
-    - 'src/music_module/app_methods.rb'
     - 'src/music_module/genre.rb'
     - 'src/music_module/music_detail.rb'
+    - 'src/music_module/app_methods.rb'

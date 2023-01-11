@@ -1,6 +1,7 @@
 require_relative './music_album'
 
 class MusicDetail < MusicAlbum
+
   @@music_albums = []
 
   attr_reader :title, :artist, :genre

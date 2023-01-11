@@ -24,16 +24,7 @@ module AppMethods
       puts @@genre_arr.uniq
     end
   end
-
-  def it_true(bool)
-    case bool
-    when 'y'
-      true
-    when 'n'
-      false
-    end
-  end
-
+  
   def add_music_album
     print 'Enter Album name: '
     title = gets.chomp
@@ -72,5 +63,16 @@ module AppMethods
 
     File.write('./src/music_module/storage/genre.json', JSON.pretty_generate(@@genre_arr))
     File.write('./src/music_module/storage/musicAlbum.json', JSON.pretty_generate(@@music_album_arr))
+  end
+
+  private
+
+  def it_true(bool)
+    case bool
+    when 'y'
+      true
+    when 'n'
+      false
+    end
   end
 end
