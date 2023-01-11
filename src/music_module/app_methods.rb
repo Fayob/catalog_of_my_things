@@ -1,25 +1,27 @@
 require_relative './music_detail'
 require_relative './genre'
 require_relative '../modules/label'
+require 'json'
 
 module AppMethods
+  @@genre_arr = JSON.parse(File.read('./src/music_module/storage/genre.json'))
+  @@music_album_arr = JSON.parse(File.read('./src/music_module/storage/musicAlbum.json'))
+
   def list_music_albums
-    if MusicDetail.list_music_albums.empty?
+    if @@music_album_arr.empty?
       puts 'Oops! No available Album'
     else
-      MusicDetail.list_music_albums.each_with_index do |album, index|
-        puts "[#{index + 1}] #{album.title} by #{album.artist}"
+      @@music_album_arr.each_with_index do |album, index|
+        puts "[#{index + 1}] #{album['title']} by #{album['artist']}"
       end
     end
   end
 
   def list_genres
-    if Genre.all_genres.empty?
+    if @@genre_arr.empty?
       puts 'Oops! No music found'
     else
-      genres = []
-      Genre.all_genres.each { |genre| genres << genre.name }
-      puts genres.uniq
+      puts @@genre_arr.uniq
     end
   end
 
@@ -42,7 +44,25 @@ module AppMethods
 
     Genre.new(genre)
     MusicDetail.new(title, artist, genre, on_spotify, publish_date)
+
+    preserve_data(title, artist, genre, on_spotify, publish_date)
+
     puts 'Music Album Created Successfully'
+  end
+
+  def preserve_data(title, artist, genre, on_spotify, publish_date)
+    @@genre_arr << genre
+
+    @@music_album_arr << {
+      'title' => title,
+      'artist' => artist,
+      'genre' => genre,
+      'on_spotify' => on_spotify,
+      'publish_date' => publish_date
+    }
+
+    File.write('./src/music_module/storage/genre.json', JSON.pretty_generate(@@genre_arr))
+    File.write('./src/music_module/storage/musicAlbum.json', JSON.pretty_generate(@@music_album_arr))
   end
 
   private
