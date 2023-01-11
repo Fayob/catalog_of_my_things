@@ -11,6 +11,6 @@ class MusicAlbum < Item
   private
 
   def can_be_archived?
-    return true if @archived && @on_spotify
+    return true if move_to_archive && @on_spotify
   end
 end
