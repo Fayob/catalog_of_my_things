@@ -27,7 +27,7 @@
 
 # 📖 CATALOG_OF_THINGS <a name="about-project"></a>
 
-**Catalog of things ** is a console application that will help you to keep a record of different types of things you own: books, music albums, movies, and games.
+**Catalog of things** is a console application that will help you to keep a record of different types of things you own: books, music albums, movies, and games.
 
 ## 🛠 Built With <a name="built-with"></a>
 
