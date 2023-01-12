@@ -11,7 +11,7 @@ CREATE TABLE book (
   source_id INT,
   label_id INT,
   publish_date DATE,
-  archived BOOLEAN
+  archived BOOLEAN,
   publisher VARCHAR(100),
   cover_state VARCHAR(100),
   FOREIGN KEY (label_id) REFERENCES label (id)
@@ -23,4 +23,4 @@ CREATE TABLE book_label (
   PRIMARY KEY (book_id, label_id),
   FOREIGN KEY (label_id) REFERENCES label (id),
   FOREIGN KEY (book_id) REFERENCES book (id)
-)
+);
