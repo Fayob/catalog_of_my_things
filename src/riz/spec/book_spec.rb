@@ -1,4 +1,4 @@
-require './src/modules/book'
+require './src/riz/book'
 
 book1 = Book.new('20201201', 'test publisher', 'good')
 book2 = Book.new('20201201', 'test publisher', 'bad')

@@ -1,6 +1,20 @@
+require './src/riz/arcade'
+require './src/riz/modules/preserve_arcade'
+require_relative './music_module/app_methods'
+
 class App
+  include PreserveArcade
+  include AppMethods
+
+  def initialize
+    @arcade = Arcade.new
+  end
+
   def list_options
     op = "
+    Welcome to catalog of things
+    Please choose your desired option below
+
     (1) List all books
     (2) List all music albums
     (3) List of games
@@ -10,12 +24,14 @@ class App
     (7) List all sources
     (8) Add a book
     (9) Add a music album
-    (10) Add a game"
+    (10) Add a game
+    (11) Quit"
 
     puts op
   end
 
   def way_to_exit
+    preserve_arcade_data(@arcade)
     puts 'Exiting...'
     exit
   end
@@ -23,9 +39,9 @@ class App
   def first_choices(input)
     case input
     when 1
-      puts 'list_books'
+      @arcade.list_books(false)
     when 2
-      puts 'list_music_albums'
+      list_music_albums
     when 3
       puts 'list_games'
     end
@@ -34,9 +50,9 @@ class App
   def second_choices(input)
     case input
     when 4
-      puts 'list_genres'
+      list_genres
     when 5
-      puts 'list_labels'
+      @arcade.list_labels(false)
     when 6
       puts 'list_authors'
     when 7
@@ -47,9 +63,9 @@ class App
   def third_choices(input)
     case input
     when 8
-      puts 'add_book'
+      @arcade.add_book
     when 9
-      puts 'add_music_album'
+      add_music_album
     when 10
       puts 'add_game'
     end
