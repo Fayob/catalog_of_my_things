@@ -1,11 +1,11 @@
 require './src/arcade'
 require './src/modules/preserve_arcade'
-require_relative './app_methods'
+require_relative './music_methods'
 require './src/game_author'
 
 class App
   include PreserveArcade
-  include AppMethods
+  include MusicMethods
 
   def initialize
     @arcade = Arcade.new

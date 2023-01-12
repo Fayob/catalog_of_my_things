@@ -3,7 +3,7 @@ require_relative './genre'
 require_relative './label'
 require 'json'
 
-module AppMethods
+module MusicMethods
   @@genre_arr = JSON.parse(File.read('./src/database/genre.json'))
   @@music_album_arr = JSON.parse(File.read('./src/database/musicAlbum.json'))
 
@@ -12,7 +12,7 @@ module AppMethods
       puts 'Oops! No available Album'
     else
       @@music_album_arr.each_with_index do |album, index|
-        puts "[#{index + 1}] #{album['title']} by #{album['artist']}"
+        puts "[#{index + 1}] '#{album['title']}' by #{album['artist']}"
       end
     end
   end
