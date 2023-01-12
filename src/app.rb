@@ -1,6 +1,7 @@
 require './src/riz/arcade'
 require './src/riz/modules/preserve_arcade'
 require_relative './music_module/app_methods'
+require './src/riz/game_author'
 
 class App
   include PreserveArcade
@@ -8,6 +9,7 @@ class App
 
   def initialize
     @arcade = Arcade.new
+    @game = GameAuthor.new
   end
 
   def list_options
@@ -21,17 +23,18 @@ class App
     (4) List all genres
     (5) List all labels
     (6) List all authors
-    (7) List all sources
-    (8) Add a book
-    (9) Add a music album
-    (10) Add a game
-    (11) Quit"
+    (7) Add a book
+    (8) Add a music album
+    (9) Add a game
+    (10) Quit"
 
     puts op
   end
 
   def way_to_exit
     preserve_arcade_data(@arcade)
+    @game.save_authors
+    @game.save_games
     puts 'Exiting...'
     exit
   end
@@ -43,7 +46,7 @@ class App
     when 2
       list_music_albums
     when 3
-      puts 'list_games'
+      @game.list_games
     end
   end
 
@@ -54,20 +57,18 @@ class App
     when 5
       @arcade.list_labels(false)
     when 6
-      puts 'list_authors'
-    when 7
-      puts 'list_sources'
+      @game.list_authors
     end
   end
 
   def third_choices(input)
     case input
-    when 8
+    when 7
       @arcade.add_book
-    when 9
+    when 8
       add_music_album
-    when 10
-      puts 'add_game'
+    when 9
+      @game.add_game
     end
   end
 
@@ -77,9 +78,9 @@ class App
 
     if input.positive? && input < 4
       first_choices(input)
-    elsif input > 3 && input < 8
+    elsif input > 3 && input < 7
       second_choices(input)
-    elsif input > 7 && input < 11
+    elsif input > 6 && input < 10
       third_choices(input)
     else
       way_to_exit

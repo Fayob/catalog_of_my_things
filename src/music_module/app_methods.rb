@@ -1,6 +1,6 @@
 require_relative './music_detail'
 require_relative './genre'
-require_relative '../modules/label'
+require_relative '../riz/label'
 require 'json'
 
 module AppMethods

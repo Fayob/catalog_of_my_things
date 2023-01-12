@@ -1,16 +1,13 @@
 require_relative '../game'
 require_relative '../author'
-require_relative '../app'
-require_relative './author_game_storage'
 require 'json'
 
 class GameAuthor
   attr_accessor :games, :authors
 
   def initialize
-    @games = []
-    @authors = []
-    @app = App.new
+    @games = load_games
+    @authors = load_authors
   end
 
   def add_game
@@ -42,7 +39,6 @@ class GameAuthor
     when 'n' then is_multiplayer = false
     else
       puts 'Invalid option. Game not added.'
-      @app.choices
     end
 
     new_game = Game.new(is_multiplayer, last_played, publish_date)
@@ -50,8 +46,6 @@ class GameAuthor
     @games << new_game
     @authors << new_author
     puts 'Game added successfully'
-
-    @app.choices
   end
 
   # Validate user dates
@@ -78,7 +72,6 @@ class GameAuthor
         #{game.last_played_at} Pushlish Date: #{game.publish_date}"
       end
     end
-    @app.choices
   end
 
   # List authors
@@ -92,7 +85,6 @@ class GameAuthor
         puts "#{author.first_name} #{author.last_name}"
       end
     end
-    @app.choices
   end
 
   # Save games
@@ -100,19 +92,20 @@ class GameAuthor
     return if @games.empty?
 
     games_json = @games.map(&:as_json)
-    File.write('games.json', JSON.dump(games_json))
+    File.write('./src/riz/games.json', JSON.dump(games_json))
   end
 
-  # Load games
   def load_games
-    return unless File.exist?('games.json')
+    return [] unless File.exist?('./src/riz/games.json')
+    new_game_arr = []
 
-    games = JSON.parse(File.read('games.json'))
+    games = JSON.parse(File.read('./src/riz/games.json'))
     games.each do |game|
-      new_game = Game.new(game['multiplayer', game['last_played_at'],
-      game['publish_date']])
-      @games.push(new_game)
+      new_game = Game.new(game['multiplayer'], game['last_played_at'],
+      game['publish_date'])
+      new_game_arr << new_game
     end
+    new_game_arr
   end
 
   # Save author
@@ -120,17 +113,18 @@ class GameAuthor
     return if @authors.empty?
 
     authors_json = @authors.map(&:as_json)
-    File.write('authors.json', JSON.dump(authors_json))
+    File.write('./src/riz/authors.json', JSON.dump(authors_json))
   end
 
   # Load games
   def load_authors
-    return unless File.exist?('authors.json')
-
-    authors = JSON.parse(File.read('authors.json'))
+    return [] unless File.exist?('./src/riz/authors.json')
+    new_author_arr = []
+    authors = JSON.parse(File.read('./src/riz/authors.json'))
     authors.each do |author|
       new_author = Author.new(author['first_name'], author['last_name'])
-      @authors.push(new_author)
+      new_author_arr << new_author
     end
+    new_author_arr
   end
 end
