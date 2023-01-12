@@ -1,8 +1,10 @@
 require './src/riz/arcade'
 require './src/riz/modules/preserve_arcade'
+require_relative './music_module/app_methods'
 
 class App
   include PreserveArcade
+  include AppMethods
 
   def initialize
     @arcade = Arcade.new
@@ -10,6 +12,9 @@ class App
 
   def list_options
     op = "
+    Welcome to catalog of things
+    Please choose your desired option below
+
     (1) List all books
     (2) List all music albums
     (3) List of games
@@ -36,7 +41,7 @@ class App
     when 1
       @arcade.list_books(false)
     when 2
-      puts 'list_music_albums'
+      list_music_albums
     when 3
       puts 'list_games'
     end
@@ -45,7 +50,7 @@ class App
   def second_choices(input)
     case input
     when 4
-      puts 'list_genres'
+      list_genres
     when 5
       @arcade.list_labels(false)
     when 6
@@ -60,7 +65,7 @@ class App
     when 8
       @arcade.add_book
     when 9
-      puts 'add_music_album'
+      add_music_album
     when 10
       puts 'add_game'
     end
