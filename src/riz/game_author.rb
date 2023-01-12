@@ -14,7 +14,6 @@ class GameAuthor
     is_multiplayer = true
 
     puts 'Add a new game'
-    puts ''
 
     print 'Last played on? [yyyy-mm-dd]: '
     date = gets.chomp
@@ -24,12 +23,7 @@ class GameAuthor
     date2 = gets.chomp
     publish_date = validate_date(date2)
 
-    print 'Add author name: '
-    print 'Add first name: '
-    author_first = gets.chomp
-
-    print 'Add second name: '
-    author_second = gets.chomp
+    add_author
 
     print 'Is the game a Multiplayer? [Y/N]: '
     multiplayer = gets.chomp.downcase
@@ -42,10 +36,22 @@ class GameAuthor
     end
 
     new_game = Game.new(is_multiplayer, last_played, publish_date)
-    new_author = Author.new(author_first, author_second)
     @games << new_game
-    @authors << new_author
     puts 'Game added successfully'
+  end
+
+  # Define game author
+  def add_author
+    puts 'Add author Details. '
+    puts ''
+    print 'Add first name: '
+    author_first = gets.chomp
+
+    print 'Add second name: '
+    author_second = gets.chomp
+
+    new_author = Author.new(author_first, author_second)
+    @authors << new_author
   end
 
   # Validate user dates
@@ -97,12 +103,13 @@ class GameAuthor
 
   def load_games
     return [] unless File.exist?('./src/riz/games.json')
+
     new_game_arr = []
 
     games = JSON.parse(File.read('./src/riz/games.json'))
     games.each do |game|
       new_game = Game.new(game['multiplayer'], game['last_played_at'],
-      game['publish_date'])
+                          game['publish_date'])
       new_game_arr << new_game
     end
     new_game_arr
@@ -119,6 +126,7 @@ class GameAuthor
   # Load games
   def load_authors
     return [] unless File.exist?('./src/riz/authors.json')
+
     new_author_arr = []
     authors = JSON.parse(File.read('./src/riz/authors.json'))
     authors.each do |author|
