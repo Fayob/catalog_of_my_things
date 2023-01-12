@@ -1,6 +1,6 @@
-require_relative './music_detail'
-require_relative './genre'
-require_relative './label'
+require_relative '../music_detail'
+require_relative '../genre'
+require_relative '../label'
 require 'json'
 
 module MusicMethods

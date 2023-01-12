@@ -1,6 +1,6 @@
 require './src/arcade'
 require './src/modules/preserve_arcade'
-require_relative './music_methods'
+require_relative './modules/music_methods'
 require './src/game_author'
 
 class App
