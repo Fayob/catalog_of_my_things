@@ -23,7 +23,6 @@ class Arcade
 
   private :add_label
 
-
   def add_book
     print 'Enter publish Publish Date: '
     publish_date = gets.chomp.to_s
