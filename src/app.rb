@@ -36,6 +36,7 @@ class App
     @game.save_authors
     @game.save_games
     puts 'Exiting...'
+    puts 'Thanks for using our app, have a great day ahead'
     exit
   end
 

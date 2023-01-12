@@ -1,6 +1,5 @@
 require_relative '../music_detail'
 require_relative '../genre'
-require_relative '../label'
 require 'json'
 
 module MusicMethods
@@ -32,7 +31,7 @@ module MusicMethods
     print 'Enter artist name: '
     artist = gets.chomp
 
-    print 'Enter the publish date: '
+    print 'Enter the publish date [YYYY-MM-DD]: '
     publish_date = gets.chomp
 
     print 'Enter genre: '

@@ -91,7 +91,7 @@ Install this project with:
 To run the project, execute the following command in your terminal:
 
 ```sh
-  ruby main.rb
+  ruby src/main.rb
 ```
 
 ### Run tests
