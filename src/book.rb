@@ -1,5 +1,5 @@
 require './src/item'
-require './src/riz/label'
+require './src/label'
 
 class Book < Item
   attr_accessor :publisher, :cover_state

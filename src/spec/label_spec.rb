@@ -1,5 +1,5 @@
-require './src/riz/label'
-require './src/riz/book'
+require './src/label'
+require './src/book'
 
 label2 = Label.new('label 2', 'blue')
 book = Book.new('20201201', 'test publisher', 'cover state test')

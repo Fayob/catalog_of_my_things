@@ -1,7 +1,7 @@
-require './src/riz/arcade'
-require './src/riz/modules/preserve_arcade'
-require_relative './music_module/app_methods'
-require './src/riz/game_author'
+require './src/arcade'
+require './src/modules/preserve_arcade'
+require_relative './app_methods'
+require './src/game_author'
 
 class App
   include PreserveArcade
