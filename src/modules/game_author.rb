@@ -27,6 +27,13 @@ class GameAuthor
     date2 = gets.chomp
     publish_date = validate_date(date2)
 
+    print 'Add author name: '
+    print 'Add first name: '
+    author_first = gets.chomp
+
+    print 'Add second name: '
+    author_second = gets.chomp
+
     print 'Is the game a Multiplayer? [Y/N]: '
     multiplayer = gets.chomp.downcase
 
@@ -39,7 +46,9 @@ class GameAuthor
     end
 
     new_game = Game.new(is_multiplayer, last_played, publish_date)
+    new_author = Author.new(author_first, author_second)
     @games << new_game
+    @authors << new_author
     puts 'Game added successfully'
 
     @app.choices
@@ -103,6 +112,25 @@ class GameAuthor
       new_game = Game.new(game['multiplayer', game['last_played_at'],
       game['publish_date']])
       @games.push(new_game)
+    end
+  end
+
+  # Save author
+  def save_authors
+    return if @authors.empty?
+
+    authors_json = @authors.map(&:as_json)
+    File.write('authors.json', JSON.dump(authors_json))
+  end
+
+  # Load games
+  def load_authors
+    return unless File.exist?('authors.json')
+
+    authors = JSON.parse(File.read('authors.json'))
+    authors.each do |author|
+      new_author = Author.new(author['first_name'], author['last_name'])
+      @authors.push(new_author)
     end
   end
 end
