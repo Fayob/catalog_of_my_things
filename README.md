@@ -63,7 +63,7 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-- A text editor preferrably [Visual Studio code](https://code.visualstudio.com/)
+- A text editor preferably [Visual Studio code](https://code.visualstudio.com/)
 - Latest version of [Ruby](https://www.ruby-lang.org/en/downloads/) installed
 - [PostgreSQL Server](https://www.postgresql.org/download/)
 
@@ -88,7 +88,7 @@ Install this project with:
 
 ### Usage
 
-To run the project, execute the following command in your termainal:
+To run the project, execute the following command in your terminal:
 
 ```sh
   ruby main.rb
@@ -111,7 +111,7 @@ To run tests, run the following command:
 
 - GitHub: [@fayob](https://github.com/fayob)
 - Twitter: [@fabimworld](https://twitter.com/Fabimworld2536)
-- LinkedIn: [@abimbola-ade](http://linkedin.com/in/abimbola-ade/)
+- LinkedIn: [abimbola-ade](http://linkedin.com/in/abimbola-ade/)
 
 👤 **Mahmoud Rizk**
 
