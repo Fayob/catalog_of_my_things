@@ -1,5 +1,5 @@
-require_relative '../game'
-require_relative '../author'
+require_relative './game'
+require_relative './author'
 require 'json'
 
 class GameAuthor
@@ -98,15 +98,15 @@ class GameAuthor
     return if @games.empty?
 
     games_json = @games.map(&:as_json)
-    File.write('./src/riz/games.json', JSON.dump(games_json))
+    File.write('./src/database/games.json', JSON.dump(games_json))
   end
 
   def load_games
-    return [] unless File.exist?('./src/riz/games.json')
+    return [] unless File.exist?('./src/database/games.json')
 
     new_game_arr = []
 
-    games = JSON.parse(File.read('./src/riz/games.json'))
+    games = JSON.parse(File.read('./src/database/games.json'))
     games.each do |game|
       new_game = Game.new(game['multiplayer'], game['last_played_at'],
                           game['publish_date'])
@@ -120,15 +120,15 @@ class GameAuthor
     return if @authors.empty?
 
     authors_json = @authors.map(&:as_json)
-    File.write('./src/riz/authors.json', JSON.dump(authors_json))
+    File.write('./src/database/authors.json', JSON.dump(authors_json))
   end
 
   # Load games
   def load_authors
-    return [] unless File.exist?('./src/riz/authors.json')
+    return [] unless File.exist?('./src/database/authors.json')
 
     new_author_arr = []
-    authors = JSON.parse(File.read('./src/riz/authors.json'))
+    authors = JSON.parse(File.read('./src/database/authors.json'))
     authors.each do |author|
       new_author = Author.new(author['first_name'], author['last_name'])
       new_author_arr << new_author

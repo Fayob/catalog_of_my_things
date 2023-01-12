@@ -1,11 +1,11 @@
 require_relative './music_detail'
 require_relative './genre'
-require_relative '../riz/label'
+require_relative './label'
 require 'json'
 
 module AppMethods
-  @@genre_arr = JSON.parse(File.read('./src/music_module/storage/genre.json'))
-  @@music_album_arr = JSON.parse(File.read('./src/music_module/storage/musicAlbum.json'))
+  @@genre_arr = JSON.parse(File.read('./src/database/genre.json'))
+  @@music_album_arr = JSON.parse(File.read('./src/database/musicAlbum.json'))
 
   def list_music_albums
     if @@music_album_arr.empty?
@@ -61,8 +61,8 @@ module AppMethods
       'publish_date' => publish_date
     }
 
-    File.write('./src/music_module/storage/genre.json', JSON.pretty_generate(@@genre_arr))
-    File.write('./src/music_module/storage/musicAlbum.json', JSON.pretty_generate(@@music_album_arr))
+    File.write('./src/database/genre.json', JSON.pretty_generate(@@genre_arr))
+    File.write('./src/database/musicAlbum.json', JSON.pretty_generate(@@music_album_arr))
   end
 
   private

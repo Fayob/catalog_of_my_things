@@ -1,5 +1,5 @@
 require './src/item'
-require './src/riz/label'
+require './src/label'
 
 label1 = Label.new('test label', 'red')
 label2 = Label.new('test label2', 'blue')

@@ -12,6 +12,6 @@
 # Offense count: 2
 Style/ClassVars:
   Exclude:
-    - 'src/music_module/genre.rb'
-    - 'src/music_module/music_detail.rb'
-    - 'src/music_module/app_methods.rb'
+    - 'src/genre.rb'
+    - 'src/music_detail.rb'
+    - 'src/app_methods.rb'

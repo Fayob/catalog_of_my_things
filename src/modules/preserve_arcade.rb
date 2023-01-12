@@ -1,11 +1,11 @@
 require 'json'
-require './src/riz/arcade'
-require './src/riz/book'
-require './src/riz/label'
+require './src/arcade'
+require './src/book'
+require './src/label'
 
 module PreserveArcade
-  BOOKS_FILE = './src/riz/database/books.json'.freeze
-  LABELS_FILE = './src/riz/database/labels.json'.freeze
+  BOOKS_FILE = './src/database/books.json'.freeze
+  LABELS_FILE = './src/database/labels.json'.freeze
 
   def preserve_labels(labels)
     data = []

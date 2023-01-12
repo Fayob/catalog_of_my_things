@@ -1,6 +1,6 @@
-require './src/riz/book'
-require './src/riz/label'
-require './src/riz/modules/preserve_arcade'
+require './src/book'
+require './src/label'
+require './src/modules/preserve_arcade'
 
 class Arcade
   include PreserveArcade
